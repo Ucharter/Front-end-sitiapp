@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="titulo mb-3">LISTA DE CLIENTES</h5>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Identificacion</th>
+                <th scope="col">editar</th>
+                <th scope="col">borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of listaClientes">
+                    <th scope="row">{{data.identificacion}}</th>
+                    <td><i class="fa-solid fa-pen-to-square text-info"(click)="EditarCliente(data)"></i></td>
+                    <td><i class="fa-solid fa-trash text-danger" (click)="EliminarCliente(data.cliente)"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="titulo mb-3">{{titulo|uppercase}}
+            <div class="spinner-border float-end" role="status" *ngIf="loading==true">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </h5>
+        <form [formGroup]="forms" (ngSubmit)="guardarProducto()">
+            <div class="input-group input-group-lg mb-2 mr-sm-2">
+                <span class="input-group-text">
+                    <i class="fa fa-id-card" aria-hidden="true"
+                    [class.green-icon]="this.forms.get('nombre')?.valid"
+                    [class.red-icon]="this.forms.get('nombre')?.invalid && this.forms.get('nombre')?.touched!=false">
+                </i>
+                </span>
+                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" >
+            </div>
+            <div class="input-group input-group-lg mb-2 mr-sm-2">
+                <span class="input-group-text">
+                    <i class="fa fa-id-card-o" aria-hidden="true"
+                    [class.green-icon]="this.forms.get('estado')?.valid"
+                    [class.red-icon]="this.forms.get('estado')?.invalid && this.forms.get('estado')?.touched!=false"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Estado" formControlName="estado" maxlength="45">
+            </div>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="input-group input-group-lg mb-2 mr-sm-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-usd" aria-hidden="true"
+                            [class.green-icon]="this.forms.get('valor_unitario')?.valid"
+                            [class.red-icon]="this.forms.get('valor_unitario')?.invalid && this.forms.get('valor_unitario')?.touched!=false"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Valor Unitario" formControlName="valor_unitario" maxlength="45">
+                    </div>
+
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="forms.invalid"><i class="fa-solid fa-database"></i> Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

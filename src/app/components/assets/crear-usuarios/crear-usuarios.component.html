@@ -1,0 +1,67 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="titulo mb-3">{{titulo|uppercase}}
+            <div class="spinner-border float-end" role="status" *ngIf="loading==true">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </h5>
+        <form [formGroup]="forms" (ngSubmit)="guardarUser()">
+            <div class="input-group input-group-lg mb-2 mr-sm-2">
+                <span class="input-group-text">
+                    <i class="fa fa-id-card" aria-hidden="true"
+                    [class.green-icon]="this.forms.get('nombre')?.valid"
+                    [class.red-icon]="this.forms.get('nombre')?.invalid && this.forms.get('nombre')?.touched!=false">
+                </i>
+                </span>
+                <input type="text" class="form-control" placeholder="Nombre" formControlName="nombre" >
+            </div>
+            <div class="input-group input-group-lg mb-2 mr-sm-2">
+                <span class="input-group-text">
+                    <i class="fa fa-id-card-o" aria-hidden="true"
+                    [class.green-icon]="this.forms.get('apellido')?.valid"
+                    [class.red-icon]="this.forms.get('apellido')?.invalid && this.forms.get('apellido')?.touched!=false"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Apellido" formControlName="apellido" maxlength="45">
+            </div>
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="input-group input-group-lg mb-2 mr-sm-2">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-circle-user"
+                            [class.green-icon]="this.forms.get('usuario')?.valid"
+                            [class.red-icon]="this.forms.get('usuario')?.invalid && this.forms.get('usuario')?.touched!=false"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Usuario" formControlName="usuario" maxlength="45">
+                    </div>
+
+                </div>
+                <div class="col-lg-5">
+                    <div class="input-group input-group-lg mb-2 mr-sm-2">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-key"
+                            [class.green-icon]="this.forms.get('contrasena')?.valid"
+                            [class.red-icon]="this.forms.get('contrasena')?.invalid && this.forms.get('contrasena')?.touched!=false"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="contrasena" formControlName="contrasena" maxlength="45">
+                    </div>
+                    
+                </div>
+                <div class="col-lg-5">
+                    <div class="input-group input-group-lg mb-2 mr-sm-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-list" aria-hidden="true"
+                            [class.green-icon]="this.forms.get('id_perfil')?.valid"
+                            [class.red-icon]="this.forms.get('id_perfil')?.invalid && this.forms.get('id_perfil')?.touched!=false"></i>
+                        </span>
+                        <select class="form-select form-select-lg" formControlName="id_perfil" [(ngModel)]="perfilSeleccionado">
+                          <option *ngFor="let perfil of Perfiles " [value]="perfil.value">{{perfil.nombre}}</option>
+                        </select>
+                      </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="forms.invalid"><i class="fa-solid fa-database"></i> Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

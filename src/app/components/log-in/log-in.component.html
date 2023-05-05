@@ -1,0 +1,58 @@
+<!-- Background image -->
+<div class="p-5 bg-image" style="
+background-image: url('https://images.pexels.com/photos/1435075/pexels-photo-1435075.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+height: 600px;
+"></div>
+<!-- Background image -->
+<!-- Section: Design Block -->
+<section class="text-center">
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          background: hsla(0, 0%, 100%, 0.432);
+          margin-top: -450px;
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">Iniciar sesion</h2>
+            <form [formGroup]="forms" (ngSubmit)="Log()">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <i class="fa-solid fa-circle-user"
+                      [class.green-icon]="this.forms.get('email')?.valid"
+                      [class.red-icon]="this.forms.get('email')?.invalid && this.forms.get('email')?.touched!=false">
+                    </i>
+                  </span>
+                  <input type="email" id="form3Example3" class="form-control" formControlName="email"/>
+                </div>
+                <label class="form-label" for="form3Example3">Nombre De Usuario</label>
+              </div>
+  
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <i class="fa-solid fa-lock"
+                      [class.green-icon]="this.forms.get('password')?.valid"
+                      [class.red-icon]="this.forms.get('password')?.invalid && this.forms.get('password')?.touched!=false">
+                    </i>
+                  </span>
+                  <input type="password" id="form3Example4" class="form-control" formControlName="password"/>
+                </div>
+                <label class="form-label" for="form3Example4">Contraseña</label>
+              </div>
+  
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4" [disabled]="forms.invalid">
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->

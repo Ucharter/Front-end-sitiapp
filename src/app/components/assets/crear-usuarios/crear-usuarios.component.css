@@ -1,0 +1,13 @@
+.green-icon{
+    color: rgba(34, 139, 1, 0.493);
+}
+.red-icon{
+    color: rgb(255, 0, 0);
+}
+.spinner-border{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.card{
+    margin-top: 10px;
+}

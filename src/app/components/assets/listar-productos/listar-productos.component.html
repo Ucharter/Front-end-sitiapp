@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="titulo mb-3">LISTA DE PRODUCTOS</h5>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estado</th>
+                <th scope="col">editar</th>
+                <th scope="col">borrar</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of listaProducto">
+                    <th scope="row">{{data.nombre}}</th>
+                    <td>{{data.estado}}</td>
+                    <td><i class="fa-solid fa-pen-to-square text-info"(click)="EditarProducto(data)"></i></td>
+                    <td><i class="fa-solid fa-trash text-danger" (click)="eliminarProducto(data.ID)"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

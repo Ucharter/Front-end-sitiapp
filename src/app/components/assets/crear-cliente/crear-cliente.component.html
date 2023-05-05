@@ -1,0 +1,57 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="titulo mb-3">{{titulo|uppercase}}
+            <div class="spinner-border float-end" role="status" *ngIf="loading==true">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </h5>
+        <form [formGroup]="forms" (ngSubmit)="guardarCliente()">
+            <div class="input-group input-group-lg mb-2 mr-sm-2">
+                <span class="input-group-text">
+                    <i class="fa fa-id-card" aria-hidden="true"
+                    [class.green-icon]="this.forms.get('identificacion')?.valid"
+                    [class.red-icon]="this.forms.get('identificacion')?.invalid && this.forms.get('identificacion')?.touched!=false">
+                </i>
+                </span>
+                <input type="text" class="form-control" placeholder="Identificacion" formControlName="identificacion" >
+            </div>
+            <div class="input-group input-group-lg mb-2 mr-sm-2">
+                <span class="input-group-text">
+                    <i class="fa fa-id-card-o" aria-hidden="true"
+                    [class.green-icon]="this.forms.get('razon_social')?.valid"
+                    [class.red-icon]="this.forms.get('razon_social')?.invalid && this.forms.get('razon_social')?.touched!=false"></i>
+                </span>
+                <input type="text" class="form-control" placeholder="Razon Social" formControlName="razon_social" maxlength="45">
+            </div>
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="input-group input-group-lg mb-2 mr-sm-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-list" aria-hidden="true"
+                            [class.green-icon]="this.forms.get('estado')?.valid"
+                            [class.red-icon]="this.forms.get('estado')?.invalid && this.forms.get('estado')?.touched!=false"></i>
+                        </span>
+                        <select class="form-select form-select-lg" formControlName="estado" [(ngModel)]="tipoEstado">
+                          <option *ngFor="let perfil of ListaEstado " [value]="perfil.value">{{perfil.nombre}}</option>
+                        </select>
+                      </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="input-group input-group-lg mb-2 mr-sm-2">
+                        <span class="input-group-text">
+                            <i class="fa fa-list" aria-hidden="true"
+                            [class.green-icon]="this.forms.get('tipo_identificacion')?.valid"
+                            [class.red-icon]="this.forms.get('tipo_identificacion')?.invalid && this.forms.get('tipo_identificacion')?.touched!=false"></i>
+                        </span>
+                        <select class="form-select form-select-lg" formControlName="tipo_identificacion" [(ngModel)]="tipoIdentificacion">
+                          <option *ngFor="let perfil of ListaIdentificacion " [value]="perfil.value">{{perfil.nombre}}</option>
+                        </select>
+                      </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" [disabled]="forms.invalid"><i class="fa-solid fa-database"></i> Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
